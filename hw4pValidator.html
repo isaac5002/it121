@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+
+<h1>Functions & validation</h1>
+
+<form id="form1" action="#" onsubmit="return validateForm(this);">
+  first name: <input type="text" name="firstname"><br>
+  last name: <input type="text" name="lastname"><br>
+  password: <input type="text" name="password"><br>
+
+  <button >Check</button>
+</form>
+
+<hr><div id="message"></div>
+
+<script>
+
+  const validateForm = (myForm) => {
+    const validatePassword = (password) => {
+      if (password.length < 8) {
+        return false;
+      }
+      if (!/[a-z]/.test(password)) {
+        return false;
+      }
+      if (!/[A-Z]/.test(password)) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+  
+    // add validatePassword function here
+    let password = myForm.password.value;
+    let lastname = myForm.lastname.value;
+    let firstname = myForm.firstname.value;// get text of firstname field
+
+    /* Form validation code goes here
+    */
+    if (firstname == "") {
+      $("#message").html("Error: First name is empty");
+    }
+    else {
+      $("#message").html("");
+    }
+    if (lastname == "") {
+      $("#message").html("Error: Last name is empty");
+    }
+    if (password == "") {
+      $("#message").html("Error: Invalid");
+    }
+    if (validatePassword(password) == false) {
+      $("#message").html("Error: Invalid");
+    }
+      if (validatePassword(password) == true && (firstname != "") && (lastname != ""))
+      $("#message").html("Yessss shes valid !!");
+    
+    return false; // prevent page reload
+  }
+
+</script>
+
+</body>
+</html>   

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script
+          src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1>Robo Dealer</h1>
+
+  <button onclick="dealHand();">Deal Hand</button>
+
+<hr><div id="card_hand"></div>
+
+<script>
+
+  /* define Card object and deck of cards here */
+ const card = {};
+// card.suit = "hearts";
+// card.value = 88;
+
+ const deck = [];
+  for (let i = 2; i < 15; i++) {
+    const card = {};
+    card.suit = "hearts";
+    card.value = i;
+    deck.push(card);
+  }
+  for (let i = 2; i < 15; i++) {
+    const card = {};
+    card.suit = "diamonds";
+    card.value = i;
+    deck.push(card);
+  }
+  for (let i = 2; i < 15; i++) {
+    const card = {};
+    card.suit = "spades";
+    card.value = i;
+    deck.push(card);
+  }
+  for (let i = 2; i < 15; i++) {
+    const card = {};
+    card.suit = "clubs";
+    card.value = i;
+    deck.push(card);
+  }
+ 
+  // console.log(deck);
+  const dealHand = () => {
+  for (let i = 0; i < 5; i++) {
+    hand = Math.floor(Math.random() * 52);
+  let value = (deck[hand].value);
+    if (value === 11) {
+      value = "Jack";
+    }
+    else if (value === 12) {
+      value = "Queen"
+    }
+    else if (value === 13) {
+      value = "King"
+    }
+    else if (value === 14) {
+      value = "Ace"
+    }
+
+      
+    console.log(hand)
+    deck[hand].suit;
+    $("#card_hand").append("<br>"+ value + " of " + deck[hand].suit );
+    
+  }
+
+    /* code to deal a card hand goes here */
+
+    // update 'card_hand' DIV with appropriate information
+
+    return false; // prevent page reload
+  }
+
+</script>
+
+</body>
+</html>
